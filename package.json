@@ -1,0 +1,30 @@
+{
+  "name": "dental-saas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema Odontológico Integral - SaaS multi-clínica Ecuador",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c cyan,magenta \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "dev:backend": "npm run start:dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "test": "npm test --workspace=backend",
+    "db:push": "npm run prisma:push --workspace=backend",
+    "db:studio": "npx prisma studio --schema=./backend/prisma/schema.prisma",
+    "prisma:generate": "npm run prisma:generate --workspace=backend",
+    "prisma:push": "npm run prisma:push --workspace=backend",
+    "seed": "npm run seed --workspace=backend",
+    "seed:reset": "npm run seed:reset --workspace=backend",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

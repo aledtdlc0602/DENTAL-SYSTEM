@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "SIGO: Backend (API :3001)", "type": "npm", "script": "start:dev", "path": "backend", "isBackground": true, "problemMatcher": [] },
+    { "label": "SIGO: Frontend (Web :3000)", "type": "npm", "script": "dev", "path": "frontend", "isBackground": true, "problemMatcher": [] },
+    { "label": "SIGO: Iniciar todo", "dependsOn": ["SIGO: Backend (API :3001)", "SIGO: Frontend (Web :3000)"], "dependsOrder": "parallel", "problemMatcher": [] },
+    { "label": "SIGO: Aplicar esquema de BD", "type": "npm", "script": "prisma:push", "path": "backend", "problemMatcher": [] },
+    { "label": "SIGO: Cargar datos demo", "type": "npm", "script": "seed", "path": "backend", "problemMatcher": [] },
+    { "label": "SIGO: Tests backend", "type": "npm", "script": "test", "path": "backend", "group": "test", "problemMatcher": [] }
+  ]
+}
